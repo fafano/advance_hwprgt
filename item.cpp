@@ -8,12 +8,12 @@ double Item::cal_price(int number){
 }
 //--------------------------------------------------------------------------------------------------------
 
-Fruit::Fruit(double p, int a): Item(p, "kg", a = 100){}
+Fruit::Fruit(double p, int a=100): Item(p, "kg", a ){}
 
 //------------------------------------------------------------------------------------------------------------
 
-Seasoning::Seasoning(double p, int a) : Item(p, "g", a = 100){}
+Seasoning::Seasoning(double p, int a=100) : Item(p, "g", a){}
 
 //------------------------------------------------------------------------------------------------------------
 
-Snack::Snack(double p, int a) : Item(p, "package", a = 100){}
+Snack::Snack(double p, int a=100) : Item(p, "package", a){}
