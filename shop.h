@@ -34,9 +34,6 @@ class cart_Shop : public Shop{
        float getprice(){
           return price;
        }
-       void calcilate(){
-           
-       }
 
      
 };
