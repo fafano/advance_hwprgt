@@ -1,49 +1,77 @@
 #ifndef ITEM_H
 #define ITEM_H
 #include <iostream>
+#include <ostream>
 #include <string>
+#include <strstream>
+
 
 
 class Item{
+    friend std::ostream& operator<<(std::ostream& os, const Item& item);
 private:
+
+    public:
+    Item();
+    virtual double cal_price(int number);
+    Item(std::string, double p, std::string u, int a);
+    virtual double get_price() const;
+    virtual int get_amount() const;
+    virtual std::string get_unit() const;
+    Item &operator=(const Item & other);
+    void operator-(int a);
+protected:
+    std::string name;
     double price;
     std::string unit;
     int amount;
-public: 
-    virtual double cal_price(int number);
-    Item(double p, std::string u, int a);
-    ~Item();
+    
+
+
 };
 
 
 //--------------------------------------------------------------class Fruit
 
 
-class Fruit : private Item{
+class Fruit : public Item{
+// friend std::ostream& operator<<(std::ostream& os, const Fruit& item);
 public:
-    Fruit(double p, int a);
+    Fruit(std::string n, double p, int a);
+    
+    double get_price() const override;
+    int get_amount() const override;
+    void operator-(int a);
+
     ~Fruit(){};
 };
+//std::ostream& operator<<(std::ostream& output, const Fruit & item);
+
 
 
 //---------------------------------------------------------------class seasoning
 
 
-class Seasoning : private Item{
+class Seasoning : public Item{
 public:
-    Seasoning(double p, int a);
+//friend std::ostream& operator<<(std::ostream& os, const Seasoning& item);
+    Seasoning(std::string n, double p, int a);
+    double get_price() const override;
+    int get_amount() const override;
+    void operator-(int a);
 };
-
+//std::ostream& operator<<(std::ostream& output, const Seasoning & item);
 
 //---------------------------------------------------------------class Snack
 
 
-class Snack: private Item{
+class Snack: public Item{
+//friend std::ostream& operator<<(std::ostream& os, const Snack& item);
 public:
-    Snack(double p, int a);
+    Snack(std::string n, double p, int a);
+    void operator-(int a);
 };
-
-
+//std::ostream& operator<<(std::ostream& output, const Snack & item);
 
 
 
