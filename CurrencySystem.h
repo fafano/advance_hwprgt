@@ -10,16 +10,16 @@ enum curr { usd, irr, eur, idn };
 class Currency {
 protected:
     curr currency;
-    float base = 0;
-    float among = 0;
+    double base = 0;
+    double among = 0;
     
 public:
     Currency() = default;
     virtual ~Currency() = default;
     
-    float changetocu(curr cu, float sum);
+    double changetocu(curr cu, double sum);
     void getcu();
-    float getbace() const { return base; }
+    double getbace() const { return base; }
     curr getCurrencyType() const { return currency; }
 };
 

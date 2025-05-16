@@ -3,10 +3,7 @@
 Item::Item(std::string n, double p, std::string u, int a = 100):name(n), price(p), unit(u), amount(a){}
 Item::Item(){}
 
-double Item::cal_price(int number){
-    int free = number / 5;
-    return (number - free) * price ;
-}
+
 Item& Item::operator=(const Item & other){
     this->amount = other.amount;
     this->price = other.price;

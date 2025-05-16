@@ -1,9 +1,10 @@
 #include "Bank.h"
+
 #include <stdexcept>
 
 
 Bank::Bank(){}
-Bank::Bank(std::string ahn,long int an,cu ct, double b , int l): account_holder_name(ahn), account_number(an), currency_type(ct), balance(b){}
+Bank::Bank(std::string ahn,long int an,curr ct, double b , int l): account_holder_name(ahn), account_number(an), currency_type(ct), balance(b){}
 
 void Bank:: withdraw(double amount){
     if(amount > 0){
@@ -18,7 +19,7 @@ double Bank:: get_balance(){
 };
 //-----------------------------------------------------------------------------------------------------------------------
 
-Prs_Act::Prs_Act(std::string ahn,long int an,cu ct, double b ,int l):
+Prs_Act::Prs_Act(std::string ahn,long int an,curr ct, double b ,int l):
        Bank( ahn, an, ct, b , 1000 ){}
 
 void Prs_Act:: deposit(double amount){
@@ -28,9 +29,23 @@ void Prs_Act:: deposit(double amount){
     limit -= amount;
     Bank::balance -= amount;
 }
+bool Prs_Act:: calculate(){
+        try{
+            if(currency_type != curr::usd){
+                Usd money(getprice());
+                setprice( money.changetocu(currency_type, getprice()));
+            }
+            deposit(getprice());
+            Bank::withdraw(getprice());
+        }
+        catch(std::invalid_argument &e){
+            std::cout << e.what()<< std::endl;
+        }
+        
+    }
 
 //--------------------------------------------------------------------------------------------------------------------------
-Org_Act::Org_Act(std::string ahn,long int an,cu ct, double b ,int l):
+Org_Act::Org_Act(std::string ahn,long int an,curr ct, double b ,int l):
        Bank( ahn, an, ct, b, 10000){}
 
 void Org_Act:: deposit(double amount){
@@ -40,3 +55,13 @@ void Org_Act:: deposit(double amount){
     limit -= amount;
     Bank::balance -= amount;
 }
+bool Org_Act:: calculate(){
+        try{
+            deposit(getprice());
+            Bank::withdraw(getprice());
+        }
+        catch(std::invalid_argument &e){
+            std::cout << e.what()<< std::endl;
+        }
+        
+    }

@@ -21,6 +21,7 @@ class cart_Shop : public Shop{
      public:
        void take(Item* it , int among);
        double getprice();
+       void setprice(double amount);
        void print();
        virtual ~cart_Shop();
 
