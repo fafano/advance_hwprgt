@@ -1,9 +1,9 @@
 #include "shop.h"
 
 
-float Shop::balance=0;
+double Shop::balance=0;
 
-void Shop::withdraw( float amount){
+void Shop::withdraw( double amount){
     balance +=amount;
 }
 
@@ -17,7 +17,7 @@ void cart_Shop::take(Item* it , int among){
      }
 
 }
-float cart_Shop::getprice(){
+double cart_Shop::getprice(){
     return price;
 }
 

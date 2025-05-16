@@ -8,19 +8,19 @@
 
 class Shop{
     private:
-      static float balance;
+      static double balance;
     public:
-       static void withdraw( float amount);
+       static void withdraw( double amount);
 
 };
 
 class cart_Shop : public Shop{
      private:
         std::vector<Item*> items;
-        float price=0;
+        double price=0;
      public:
        void take(Item* it , int among);
-       float getprice();
+       double getprice();
        virtual ~cart_Shop();
 
      

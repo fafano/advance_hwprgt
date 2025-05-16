@@ -31,7 +31,14 @@ public:
     void deposit(double amount);
     Prs_Act(std::string ahn,long int an,cu ct, double b ,int l);
     bool calculate(){
-        deposit(getprice());
+        try{
+            deposit(getprice());
+            Bank::withdraw(getprice());
+        }
+        catch(std::invalid_argument &e){
+            std::cout << e.what()<< std::endl;
+        }
+        
     }
 
 };
