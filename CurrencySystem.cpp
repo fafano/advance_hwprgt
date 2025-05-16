@@ -2,7 +2,7 @@
 
 using namespace std;
 
-float Currency::changetocu(curr cu, float sum) {
+double Currency::changetocu(curr cu, double sum) {
     if (cu == curr::usd) {
         currency = cu;
         base = sum;

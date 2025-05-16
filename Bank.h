@@ -4,7 +4,7 @@
 #include <iostream>
 #include <ostream>
 #include <string>
-#include <strstream>
+// #include <strstream>
 #include <stdexcept>
 #include "shop.h"
 #include "CurrencySystem.h"
@@ -34,7 +34,7 @@ class Prs_Act : public Bank, public cart_Shop{
 public:
     void deposit(double amount);
     Prs_Act(std::string ahn,long int an,curr ct, double b ,int l);
-    bool calculate();
+    void calculate();
 
 };
 

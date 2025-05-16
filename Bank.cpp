@@ -30,7 +30,7 @@ void Prs_Act:: deposit(double amount){
     limit -= amount;
     Bank::balance -= amount;
 }
-bool Prs_Act:: calculate(){
+void Prs_Act:: calculate(){
         try{
             if(currency_type != curr::usd){
                 Usd money(getprice());

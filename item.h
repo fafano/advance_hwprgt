@@ -3,7 +3,7 @@
 #include <iostream>
 #include <ostream>
 #include <string>
-#include <strstream>
+// #include <strstream>
 
 
 
@@ -35,7 +35,7 @@ protected:
 
 
 class Fruit : public Item{
-// friend std::ostream& operator<<(std::ostream& os, const Fruit& item);
+
 public:
     Fruit(std::string n, double p, int a);
     
@@ -45,7 +45,6 @@ public:
 
     ~Fruit(){};
 };
-//std::ostream& operator<<(std::ostream& output, const Fruit & item);
 
 
 
@@ -54,24 +53,23 @@ public:
 
 class Seasoning : public Item{
 public:
-//friend std::ostream& operator<<(std::ostream& os, const Seasoning& item);
+
     Seasoning(std::string n, double p, int a);
     double get_price() const override;
     int get_amount() const override;
     void operator-(int a);
 };
-//std::ostream& operator<<(std::ostream& output, const Seasoning & item);
+
 
 //---------------------------------------------------------------class Snack
 
 
 class Snack: public Item{
-//friend std::ostream& operator<<(std::ostream& os, const Snack& item);
+
 public:
     Snack(std::string n, double p, int a);
     void operator-(int a);
 };
-//std::ostream& operator<<(std::ostream& output, const Snack & item);
 
 
 
