@@ -1,7 +1,7 @@
 #include "Bank.h"
-#include "shop.h"
+// #include "shop.h"
 
-#include <stdexcept>
+// #include <stdexcept>
 
 
 
@@ -57,7 +57,7 @@ void Org_Act:: deposit(double amount){
     limit -= amount;
     Bank::balance -= amount;
 }
-bool Org_Act:: calculate(){
+void Org_Act:: calculate(){
         try{
             if(currency_type != curr::usd){
                 Usd money(getprice());

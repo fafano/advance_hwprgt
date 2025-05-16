@@ -13,7 +13,8 @@ private:
 
     public:
     Item();
-    virtual double cal_price(int number);
+    virtual ~Item();
+
     Item(std::string, double p, std::string u, int a);
     virtual double get_price() const;
     virtual int get_amount() const;

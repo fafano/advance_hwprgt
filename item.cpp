@@ -2,6 +2,7 @@
 
 Item::Item(std::string n, double p, std::string u, int a = 100):name(n), price(p), unit(u), amount(a){}
 Item::Item(){}
+Item::~Item(){}
 
 
 Item& Item::operator=(const Item & other){

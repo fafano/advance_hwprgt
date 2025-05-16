@@ -1,11 +1,11 @@
 #ifndef BANK_H
 #define BANK_H
 
-#include <iostream>
-#include <ostream>
-#include <string>
+// #include <iostream>
+// #include <ostream>
+// #include <string>
 // #include <strstream>
-#include <stdexcept>
+// #include <stdexcept>
 #include "shop.h"
 #include "CurrencySystem.h"
 
@@ -44,7 +44,7 @@ class Org_Act : public Bank, public cart_Shop{
 public:
     void deposit(double amount);
     Org_Act(std::string ahn,long int an,curr ct, double b);
-    bool calculate();
+    void calculate();
 
 };
 
