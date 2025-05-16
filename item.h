@@ -1,7 +1,7 @@
 #ifndef ITEM_H
 #define ITEM_H
 #include <iostream>
-#include <ostream>
+// #include <ostream>
 #include <string>
 // #include <strstream>
 
@@ -13,7 +13,6 @@ private:
 
     public:
     Item();
-    virtual double cal_price(int number);
     Item(std::string, double p, std::string u, int a);
     virtual double get_price() const;
     virtual int get_amount() const;

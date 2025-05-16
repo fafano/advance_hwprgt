@@ -75,13 +75,7 @@ void Seasoning:: operator+=(int a){
     this->amount = this->amount - a;
     
 }
-// std::ostream& operator<<(std::ostream& output, const Seasoning & item){
-//     output <<"\nname: " << item.name <<
-//             "\namount: " << item.amount <<
-//             "\nprice: " << item.price <<
-//             "\nunit: " << item.unit << std::endl;
-//             return output;
-// }
+
 
 //------------------------------------------------------------------------------------------------------------
 
@@ -94,10 +88,3 @@ void Snack:: operator+=(int a){
     this->amount = this->amount - a;
     
 }
-// std::ostream& operator<<(std::ostream& output, const Snack & item){
-//     output <<"\nname: " << item.name <<
-//             "\namount: " << item.amount <<
-//             "\nprice: " << item.price <<
-//             "\nunit: " << item.unit << std::endl;
-//             return output;
-// }

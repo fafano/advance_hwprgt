@@ -6,6 +6,7 @@
 #include <stdexcept>
 
 
+
 class Shop{
     private:
       static double balance;
