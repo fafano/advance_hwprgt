@@ -10,7 +10,7 @@ Item& Item::operator=(const Item & other){
     this->unit = other.unit;
     return *this;
 }
-void Item:: operator-(int a){
+void Item:: operator-=(int a){
     this->amount = this->amount - a;
     
 }
@@ -35,7 +35,7 @@ double Fruit::get_price() const{
 int Fruit::get_amount() const{
     return Item::get_amount();
 }
-void Fruit:: operator-(int a){
+void Fruit:: operator-=(int a){
     this->amount = this->amount - a;
     
 }
@@ -59,7 +59,7 @@ double Seasoning::get_price() const{
 int Seasoning:: get_amount() const{
     return Item::get_amount();
 }
-void Seasoning:: operator-(int a){
+void Seasoning:: operator-=(int a){
     this->amount = this->amount - a;
     
 }
@@ -74,7 +74,7 @@ void Seasoning:: operator-(int a){
 //------------------------------------------------------------------------------------------------------------
 
 Snack::Snack(std::string n,double p, int a=100) : Item(n, p, "package", a){}
-void Snack:: operator-(int a){
+void Snack:: operator-=(int a){
     this->amount = this->amount - a;
     
 }

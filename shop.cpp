@@ -16,6 +16,7 @@ void cart_Shop::take(Item* it , int among){
     if(it->get_amount() < among ){
          throw std::invalid_argument("sorry we have not that mouch!!");
     }else{
+         it -= among;
          items.push_back(it);  
             int free = among / 5;
             among -=free;

@@ -4,7 +4,7 @@
 #include <stdexcept>
 
 
-Bank::Bank(){}
+
 Bank::Bank(std::string ahn,long int an,curr ct, double b , int l): account_holder_name(ahn), account_number(an), currency_type(ct), balance(b){}
 
 void Bank:: withdraw(double amount){
@@ -20,7 +20,7 @@ double Bank:: get_balance(){
 };
 //-----------------------------------------------------------------------------------------------------------------------
 
-Prs_Act::Prs_Act(std::string ahn,long int an,curr ct, double b ,int l):
+Prs_Act::Prs_Act(std::string ahn,long int an,curr ct, double b ):
        Bank( ahn, an, ct, b , 1000 ){}
 
 void Prs_Act:: deposit(double amount){
@@ -47,7 +47,7 @@ void Prs_Act:: calculate(){
     }
 
 //--------------------------------------------------------------------------------------------------------------------------
-Org_Act::Org_Act(std::string ahn,long int an,curr ct, double b ,int l):
+Org_Act::Org_Act(std::string ahn,long int an,curr ct, double b ):
        Bank( ahn, an, ct, b, 10000){}
 
 void Org_Act:: deposit(double amount){
