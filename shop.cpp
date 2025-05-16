@@ -1,4 +1,7 @@
 #include "shop.h"
+#include <iostream>
+
+using namespace std;
 
 
 double Shop::balance=0;
@@ -28,3 +31,13 @@ cart_Shop::~cart_Shop() {
     }
     items.clear();
 }
+
+ void cart_Shop::print(){
+       cout<<"*********list**********";
+       for(auto it : items){
+         cout<<*it;
+       }
+       cout<<"final amount with discount "<<getprice()<<endl;
+ }
+
+

@@ -44,9 +44,9 @@ void Fruit:: operator-(int a){
 }
 std::ostream& operator<<(std::ostream& output, const Item & item){
     output <<"\nname: " << item.name <<
-            "\namount: " << item.amount <<
-            "\nprice: " << item.price <<
-            "\nunit: " << item.unit << std::endl;
+            "   amount: " << item.amount <<
+            "   price: " << item.price <<
+            "   unit: " << item.unit << std::endl;
             return output;
 }
 
