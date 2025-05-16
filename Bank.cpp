@@ -1,4 +1,5 @@
 #include "Bank.h"
+#include "shop.h"
 
 #include <stdexcept>
 
@@ -37,6 +38,7 @@ bool Prs_Act:: calculate(){
             }
             deposit(getprice());
             Bank::withdraw(getprice());
+            cart_Shop::print();
         }
         catch(std::invalid_argument &e){
             std::cout << e.what()<< std::endl;
@@ -57,8 +59,13 @@ void Org_Act:: deposit(double amount){
 }
 bool Org_Act:: calculate(){
         try{
+            if(currency_type != curr::usd){
+                Usd money(getprice());
+                setprice( money.changetocu(currency_type, getprice()));
+            }
             deposit(getprice());
             Bank::withdraw(getprice());
+            cart_Shop::print();
         }
         catch(std::invalid_argument &e){
             std::cout << e.what()<< std::endl;
