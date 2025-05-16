@@ -20,6 +20,7 @@ private:
     virtual std::string get_unit() const;
     Item &operator=(const Item & other);
     void operator-(int a);
+    void operator+=(int a);
 protected:
     std::string name;
     double price;
@@ -42,6 +43,7 @@ public:
     double get_price() const override;
     int get_amount() const override;
     void operator-(int a);
+    void operator+=(int a);
 
     ~Fruit(){};
 };
@@ -58,6 +60,7 @@ public:
     double get_price() const override;
     int get_amount() const override;
     void operator-(int a);
+    void operator+=(int a);
 };
 
 
@@ -69,6 +72,7 @@ class Snack: public Item{
 public:
     Snack(std::string n, double p, int a);
     void operator-(int a);
+    void operator+=(int a);
 };
 
 

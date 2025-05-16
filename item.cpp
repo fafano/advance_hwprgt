@@ -14,6 +14,10 @@ void Item:: operator-(int a){
     this->amount = this->amount - a;
     
 }
+void Item:: operator+=(int a){
+    this->amount = this->amount - a;
+    
+}
 
 double Item:: get_price() const{
     return price;
@@ -36,6 +40,10 @@ int Fruit::get_amount() const{
     return Item::get_amount();
 }
 void Fruit:: operator-(int a){
+    this->amount = this->amount - a;
+    
+}
+void Fruit:: operator+=(int a){
     this->amount = this->amount - a;
     
 }
@@ -63,6 +71,10 @@ void Seasoning:: operator-(int a){
     this->amount = this->amount - a;
     
 }
+void Seasoning:: operator+=(int a){
+    this->amount = this->amount - a;
+    
+}
 // std::ostream& operator<<(std::ostream& output, const Seasoning & item){
 //     output <<"\nname: " << item.name <<
 //             "\namount: " << item.amount <<
@@ -75,6 +87,10 @@ void Seasoning:: operator-(int a){
 
 Snack::Snack(std::string n,double p, int a=100) : Item(n, p, "package", a){}
 void Snack:: operator-(int a){
+    this->amount = this->amount - a;
+    
+}
+void Snack:: operator+=(int a){
     this->amount = this->amount - a;
     
 }
