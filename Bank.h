@@ -30,6 +30,9 @@ class Prs_Act : public Bank, public cart_Shop{
 public:
     void deposit(double amount);
     Prs_Act(std::string ahn,long int an,cu ct, double b ,int l);
+    bool calculate(){
+        deposit(getprice());
+    }
 
 };
 class Org_Act : public Bank, public cart_Shop{
