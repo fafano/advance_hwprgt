@@ -27,6 +27,7 @@ void cart_Shop::take(std::shared_ptr<Item> it , int among){
             among -=free;
          price+=(among*(it->get_price()));
      }
+   
 
 }
 
@@ -47,10 +48,14 @@ void cart_Shop :: setprice(double amount){
  void cart_Shop::print(){
        cout<<"*********list**********";
        for(auto it : items.first){
-         cout<<*it<<"   among : "<<items.second[i]<<endl;i++;
-
+        cout<<*it<<"   amount : "<<items.second[i]<<endl;
+        i++;
+        
        }
-       cout<<"final amount with discount "<<getprice()<<endl;
+       cout<<"Dear " << this->name <<", thank you for your choice. final amount with discount "<<getprice()<<endl;
  }
 
 
+cart_Shop::cart_Shop(std::string name){
+    this->name = name;
+}

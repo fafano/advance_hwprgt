@@ -1,4 +1,5 @@
 #include "Bank.h"
+#include "shop.h"
 // #include "shop.h"
 
 // #include <stdexcept>
@@ -21,7 +22,7 @@ double Bank:: get_balance(){
 //-----------------------------------------------------------------------------------------------------------------------
 
 Prs_Act::Prs_Act(std::string ahn,long int an,curr ct, double b ):
-       Bank( ahn, an, ct, b , 1000 ){}
+       Bank( ahn, an, ct, b , 1000 ), cart_Shop(ahn){}
 
 void Prs_Act:: deposit(double amount){
     if(amount > Bank::balance || limit < amount ){
@@ -43,9 +44,8 @@ void Prs_Act:: calculate(){
             std::cout << e.what()<< std::endl;
         }
             Shop::withdraw(getprice());
-           
             // cart_Shop::print();
-        
+         
     
             
         
@@ -54,7 +54,7 @@ void Prs_Act:: calculate(){
 
 //--------------------------------------------------------------------------------------------------------------------------
 Org_Act::Org_Act(std::string ahn,long int an,curr ct, double b ):
-       Bank( ahn, an, ct, b, 10000){}
+       Bank( ahn, an, ct, b, 10000), cart_Shop(ahn){}
 
 void Org_Act:: deposit(double amount){
     if(amount > Bank::balance || limit >= 10000){
@@ -76,5 +76,6 @@ void Org_Act:: calculate(){
         catch(std::out_of_range &e){
             std::cout << e.what()<< std::endl;
         }
+       
         
     }

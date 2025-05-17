@@ -16,8 +16,9 @@ int main(){
    per1.take(std::make_shared<Item>(chips) , 1);
    // std::cout<<2222;
    per1.calculate();
-   per1.print();
+    per1.print();
    std::cout<<per1.get_balance();
+   std::cout <<std::endl <<"kkkkkkkkkkkkkk"<<  apple.get_amount() ; 
    // per1.print();
    
    

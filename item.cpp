@@ -25,10 +25,6 @@ int Item:: get_amount() const{
 std::string Item :: get_unit() const{
     return unit;
 }
-void Item:: set_amount(int number){
-    this->amount -= number;
-    std::cout << this->amount;
-}
 
 
 //--------------------------------------------------------------------------------------------------------
@@ -46,8 +42,9 @@ void Fruit:: operator-=(int a){
 }
 std::ostream& operator<<(std::ostream& output, const Item & item){
     output <<"\nname: " << item.name <<
+            "   amount: " << item.amount <<
             "   price: " << item.price <<
-            "   unit: " << item.unit;
+            "   unit: " << item.unit << std::endl;
             return output;
 }
 
