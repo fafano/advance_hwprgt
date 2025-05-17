@@ -5,6 +5,7 @@
 #include <vector>
 #include <stdexcept>
 #include <utility>
+#include <memory>
 
 
 class Shop{
@@ -17,7 +18,7 @@ class Shop{
 
 class cart_Shop : public Shop{
      private:
-       std::pair<std::vector<Item*> , std::vector<int>> items;
+       std::pair<std::vector<std::shared_ptr<Item>> , std::vector<int>> items;
         double price=0;
         int i=0;
      public:
@@ -25,7 +26,7 @@ class cart_Shop : public Shop{
        double getprice();
        void setprice(double amount);
        void print();
-       virtual ~cart_Shop();
+      //  virtual ~cart_Shop();
 
      
 };

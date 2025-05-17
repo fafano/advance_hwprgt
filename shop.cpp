@@ -1,4 +1,5 @@
 #include "shop.h"
+#include <memory>
 // #include <iostream>
 
 using namespace std;
@@ -17,7 +18,7 @@ void cart_Shop::take(Item* it , int among){
          throw std::invalid_argument("sorry we have not that mouch!!");
     }else{
          
-         items.first.push_back(it);
+         items.first.push_back(std::make_shared<Item>(*it));
          items.second.push_back(among);
         //   it -= among; 
             int free = among / 5;
@@ -33,13 +34,13 @@ double cart_Shop::getprice(){
 void cart_Shop :: setprice(double amount){
     price = amount;
 }
-cart_Shop::~cart_Shop() {
+// cart_Shop::~cart_Shop() {
       
-    for (Item* item : items.first) {
-        delete item;
-    }
-    items.first.clear();
-}
+//     for (Item* item : items.first) {
+//         delete item;
+//     }
+//     items.first.clear();
+// }
 
  void cart_Shop::print(){
        cout<<"*********list**********";
