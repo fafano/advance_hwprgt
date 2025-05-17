@@ -11,9 +11,9 @@ int main(){
    Fruit apple("apple" , 100 , 10);
     Snack chips("chips" , 100 , 2);
    // std::cout<<1111;
-   per1.take(&apple , 2);
+   per1.take(std::make_shared<Item>(apple) , 2);
     
-   per1.take(&chips , 1);
+   per1.take(std::make_shared<Item>(chips) , 1);
    // std::cout<<2222;
    per1.calculate();
    per1.print();

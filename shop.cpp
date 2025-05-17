@@ -1,5 +1,5 @@
 #include "shop.h"
-#include <memory>
+// #include <memory>
 // #include <iostream>
 
 using namespace std;
@@ -12,7 +12,7 @@ void Shop::withdraw( double amount){
 }
 
 
-void cart_Shop::take(Item* it , int among){
+void cart_Shop::take(std::shared_ptr<Item> it , int among){
           
     if(it->get_amount() < among ){
          throw std::invalid_argument("sorry we have not that mouch!!");

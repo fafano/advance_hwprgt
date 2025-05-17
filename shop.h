@@ -22,7 +22,7 @@ class cart_Shop : public Shop{
         double price=0;
         int i=0;
      public:
-       void take(Item* it , int among);
+       void take(std::shared_ptr<Item>it , int among);
        double getprice();
        void setprice(double amount);
        void print();

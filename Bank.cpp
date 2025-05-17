@@ -39,7 +39,7 @@ void Prs_Act:: calculate(){
                 Usd money(getprice());
                 setprice( money.changetocu(currency_type, getprice()));
             }try
-        {deposit(getprice());}catch(std::invalid_argument &e){
+        {deposit(getprice());}catch(std::out_of_range &e){
             std::cout << e.what()<< std::endl;
         }
             Shop::withdraw(getprice());
@@ -73,7 +73,7 @@ void Org_Act:: calculate(){
             Bank::withdraw(getprice());
             cart_Shop::print();
         }
-        catch(std::invalid_argument &e){
+        catch(std::out_of_range &e){
             std::cout << e.what()<< std::endl;
         }
         
