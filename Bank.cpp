@@ -34,19 +34,21 @@ void Prs_Act:: deposit(double amount){
 }
 void Prs_Act:: calculate(){
     // std::cout<<"yy";
-        try{
+        
             if(currency_type != curr::usd){ 
                 Usd money(getprice());
                 setprice( money.changetocu(currency_type, getprice()));
-            }
-            deposit(getprice());
-            Bank::withdraw(getprice());
-           
-            cart_Shop::print();
-        }
-        catch(std::invalid_argument &e){
+            }try
+        {deposit(getprice());}catch(std::invalid_argument &e){
             std::cout << e.what()<< std::endl;
         }
+            Shop::withdraw(getprice());
+           
+            // cart_Shop::print();
+        
+    
+            
+        
         
     }
 

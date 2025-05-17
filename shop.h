@@ -4,6 +4,7 @@
 #include "item.h"
 #include <vector>
 #include <stdexcept>
+#include <utility>
 
 
 class Shop{
@@ -16,8 +17,9 @@ class Shop{
 
 class cart_Shop : public Shop{
      private:
-        std::vector<Item*> items;
+       std::pair<std::vector<Item*> , std::vector<int>> items;
         double price=0;
+        int i=0;
      public:
        void take(Item* it , int among);
        double getprice();

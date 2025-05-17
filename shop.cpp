@@ -17,7 +17,8 @@ void cart_Shop::take(Item* it , int among){
          throw std::invalid_argument("sorry we have not that mouch!!");
     }else{
          
-         items.push_back(it);
+         items.first.push_back(it);
+         items.second.push_back(among);
         //   it -= among; 
             int free = among / 5;
             among -=free;
@@ -34,16 +35,17 @@ void cart_Shop :: setprice(double amount){
 }
 cart_Shop::~cart_Shop() {
       
-    for (Item* item : items) {
+    for (Item* item : items.first) {
         delete item;
     }
-    items.clear();
+    items.first.clear();
 }
 
  void cart_Shop::print(){
        cout<<"*********list**********";
-       for(auto it : items){
-         cout<<*it;
+       for(auto it : items.first){
+         cout<<*it<<"   among : "<<items.second[i]<<endl;i++;
+
        }
        cout<<"final amount with discount "<<getprice()<<endl;
  }
