@@ -4,7 +4,7 @@
 // #include <iostream>
 // #include <ostream>
 // #include <string>
-// // #include <strstream>
+// #include <strstream>
 // #include <stdexcept>
 #include "shop.h"
 #include "CurrencySystem.h"
@@ -20,7 +20,7 @@ protected:
     int limit;
     
 public:
-    Bank();
+ 
     Bank(std::string ahn,long int an,curr ct, double b ,int l);
     void deposit(double amount);
     void withdraw(double amount);
@@ -33,7 +33,7 @@ public:
 class Prs_Act : public Bank, public cart_Shop{
 public:
     void deposit(double amount);
-    Prs_Act(std::string ahn,long int an,curr ct, double b ,int l);
+    Prs_Act(std::string ahn,long int an,curr ct, double b);
     void calculate();
 
 };
@@ -43,7 +43,7 @@ public:
 class Org_Act : public Bank, public cart_Shop{
 public:
     void deposit(double amount);
-    Org_Act(std::string ahn,long int an,curr ct, double b ,int l);
+    Org_Act(std::string ahn,long int an,curr ct, double b);
     void calculate();
 
 };

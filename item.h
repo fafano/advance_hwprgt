@@ -1,7 +1,7 @@
 #ifndef ITEM_H
 #define ITEM_H
 #include <iostream>
-// #include <ostream>
+#include <ostream>
 #include <string>
 // #include <strstream>
 
@@ -13,13 +13,14 @@ private:
 
     public:
     Item();
+    virtual ~Item();
+
     Item(std::string, double p, std::string u, int a);
     virtual double get_price() const;
     virtual int get_amount() const;
     virtual std::string get_unit() const;
     Item &operator=(const Item & other);
-    void operator-(int a);
-    void operator+=(int a);
+    void operator-=(int a);
 protected:
     std::string name;
     double price;
@@ -41,8 +42,7 @@ public:
     
     double get_price() const override;
     int get_amount() const override;
-    void operator-(int a);
-    void operator+=(int a);
+    void operator-=(int a);
 
     ~Fruit(){};
 };
@@ -58,8 +58,7 @@ public:
     Seasoning(std::string n, double p, int a);
     double get_price() const override;
     int get_amount() const override;
-    void operator-(int a);
-    void operator+=(int a);
+    void operator-=(int a);
 };
 
 
@@ -70,8 +69,7 @@ class Snack: public Item{
 
 public:
     Snack(std::string n, double p, int a);
-    void operator-(int a);
-    void operator+=(int a);
+    void operator-=(int a);
 };
 
 

@@ -1,5 +1,5 @@
 #include "shop.h"
-
+// #include <iostream>
 
 using namespace std;
 
@@ -16,7 +16,9 @@ void cart_Shop::take(Item* it , int among){
     if(it->get_amount() < among ){
          throw std::invalid_argument("sorry we have not that mouch!!");
     }else{
-         items.push_back(it);  
+         
+         items.push_back(it);
+        //   it -= among; 
             int free = among / 5;
             among -=free;
          price+=(among*(it->get_price()));

@@ -1,10 +1,10 @@
 #include "Bank.h"
 // #include "shop.h"
 
+// #include <stdexcept>
 
 
 
-Bank::Bank(){}
 Bank::Bank(std::string ahn,long int an,curr ct, double b , int l): account_holder_name(ahn), account_number(an), currency_type(ct), balance(b){}
 
 void Bank:: withdraw(double amount){
@@ -16,11 +16,11 @@ void Bank:: withdraw(double amount){
     }
 }
 double Bank:: get_balance(){
-    return balance;
+    return Bank::balance;
 };
 //-----------------------------------------------------------------------------------------------------------------------
 
-Prs_Act::Prs_Act(std::string ahn,long int an,curr ct, double b ,int l):
+Prs_Act::Prs_Act(std::string ahn,long int an,curr ct, double b ):
        Bank( ahn, an, ct, b , 1000 ){}
 
 void Prs_Act:: deposit(double amount){
@@ -28,16 +28,20 @@ void Prs_Act:: deposit(double amount){
         throw std::out_of_range ("limit per day or no enough balance!!");
     }
     limit -= amount;
+    // std::cout<<Bank::balance <<amount;
     Bank::balance -= amount;
+    // std::cout<<Bank::balance ;
 }
 void Prs_Act:: calculate(){
+    // std::cout<<"yy";
         try{
-            if(currency_type != curr::usd){
+            if(currency_type != curr::usd){ 
                 Usd money(getprice());
                 setprice( money.changetocu(currency_type, getprice()));
             }
             deposit(getprice());
             Bank::withdraw(getprice());
+           
             cart_Shop::print();
         }
         catch(std::invalid_argument &e){
@@ -47,7 +51,7 @@ void Prs_Act:: calculate(){
     }
 
 //--------------------------------------------------------------------------------------------------------------------------
-Org_Act::Org_Act(std::string ahn,long int an,curr ct, double b ,int l):
+Org_Act::Org_Act(std::string ahn,long int an,curr ct, double b ):
        Bank( ahn, an, ct, b, 10000){}
 
 void Org_Act:: deposit(double amount){
@@ -57,13 +61,13 @@ void Org_Act:: deposit(double amount){
     limit -= amount;
     Bank::balance -= amount;
 }
-void Org_Act::calculate(){
+void Org_Act:: calculate(){
         try{
             if(currency_type != curr::usd){
                 Usd money(getprice());
                 setprice( money.changetocu(currency_type, getprice()));
             }
-            deposit(getprice());
+            deposit(cart_Shop::getprice());
             Bank::withdraw(getprice());
             cart_Shop::print();
         }
