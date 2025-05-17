@@ -21,6 +21,8 @@ void cart_Shop::take(Item* it , int among){
          items.first.push_back(std::make_shared<Item>(*it));
          items.second.push_back(among);
         //   it -= among; 
+        it->set_amount(among);
+        
             int free = among / 5;
             among -=free;
          price+=(among*(it->get_price()));

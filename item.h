@@ -19,6 +19,7 @@ private:
     virtual double get_price() const;
     virtual int get_amount() const;
     virtual std::string get_unit() const;
+    void set_amount(int number);
     Item &operator=(const Item & other);
     void operator-=(int a);
 protected:

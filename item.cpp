@@ -25,6 +25,10 @@ int Item:: get_amount() const{
 std::string Item :: get_unit() const{
     return unit;
 }
+void Item:: set_amount(int number){
+    this->amount -= number;
+    std::cout << this->amount;
+}
 
 
 //--------------------------------------------------------------------------------------------------------
