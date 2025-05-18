@@ -12,7 +12,7 @@ Item& Item::operator=(const Item & other){
     return *this;
 }
 void Item:: operator-=(int a){
-    this->amount = this->amount - a;
+    this->amount -= a;
     
 }
 
@@ -36,16 +36,16 @@ Fruit::Fruit(std::string n, double p, int a=100): Item(n,p, "kg", a ){}
 double Fruit::get_price() const{
     return Item::get_price();
 }
-int Fruit::get_amount() const{
-    return Item::get_amount();
-}
+// int Fruit::get_amount() const{
+//     return Item::get_amount();
+// }
 void Fruit:: operator-=(int a){
     this->amount = this->amount - a;
     
 }
 std::ostream& operator<<(std::ostream& output, const Item & item){
     output <<"\nname: " << item.name <<
-            "   amount: " << item.amount <<
+            "   Remaining amount: " << item.amount <<
             "   price: " << item.price <<
             "   unit: " << item.unit << std::endl;
             return output;
@@ -60,9 +60,9 @@ Seasoning::Seasoning(std::string n, double p, int a=100) : Item(n, p, "g", a){}
 double Seasoning::get_price() const{
     return Item::get_price();
 }
-int Seasoning:: get_amount() const{
-    return Item::get_amount();
-}
+// int Seasoning:: get_amount() const{
+//     return Item::get_amount();
+// }
 void Seasoning:: operator-=(int a){
     this->amount = this->amount - a;
     
@@ -89,3 +89,8 @@ void Snack:: operator-=(int a){
 //             "\nunit: " << item.unit << std::endl;
 //             return output;
 // }
+
+
+void Fruit::set_amount(int number) {
+    amount = number;
+}

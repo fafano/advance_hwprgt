@@ -20,8 +20,8 @@ void cart_Shop::take(std::shared_ptr<Item> it , int among){
          
          items.first.push_back(std::make_shared<Item>(*it));
          items.second.push_back(among);
-        //   it -= among; 
-        it->set_amount(among);
+        // (*it)-= among;
+        // it->set_amount(among);
         
             int free = among / 5;
             among -=free;
@@ -48,11 +48,13 @@ void cart_Shop :: setprice(double amount){
  void cart_Shop::print(){
        cout<<"*********list**********";
        for(auto it : items.first){
-        cout<<*it<<"   amount : "<<items.second[i]<<endl;
+        // (*it) -=items.second[i];
+       it->set_amount(it->get_amount() - items.second[i]);
+        cout<<*it<<"   amount you buy : "<<items.second[i];
         i++;
         
        }
-       cout<<"Dear " << this->name <<", thank you for your choice. final amount with discount "<<getprice()<<endl;
+       cout<<endl<<"Dear " << this->name <<", thank you for your choice. final amount with discount "<<getprice()<<endl;
  }
 
 

@@ -6,7 +6,7 @@
 
 
 
-Bank::Bank(std::string ahn,long int an,curr ct, double b , int l): account_holder_name(ahn), account_number(an), currency_type(ct), balance(b){}
+Bank::Bank(std::string ahn,long int an,curr ct, double b , int l): account_holder_name(ahn), account_number(an), currency_type(ct), balance(b) , limit(l){}
 
 void Bank:: withdraw(double amount){
     if(amount > 0){
@@ -26,6 +26,7 @@ Prs_Act::Prs_Act(std::string ahn,long int an,curr ct, double b ):
 
 void Prs_Act:: deposit(double amount){
     if(amount > Bank::balance || limit < amount ){
+        std::cout<<amount<<" "<<Bank::balance<<" "<<limit<<" ";
         throw std::out_of_range ("limit per day or no enough balance!!");
     }
     limit -= amount;
@@ -44,7 +45,9 @@ void Prs_Act:: calculate(){
             std::cout << e.what()<< std::endl;
         }
             Shop::withdraw(getprice());
-            // cart_Shop::print();
+
+            cart_Shop::print();
+
          
     
             
@@ -57,25 +60,25 @@ Org_Act::Org_Act(std::string ahn,long int an,curr ct, double b ):
        Bank( ahn, an, ct, b, 10000), cart_Shop(ahn){}
 
 void Org_Act:: deposit(double amount){
-    if(amount > Bank::balance || limit >= 10000){
+    if(amount > Bank::balance || limit < amount){
         throw std::out_of_range ("limit per day or no enough balance!!");
     }
     limit -= amount;
     Bank::balance -= amount;
 }
 void Org_Act:: calculate(){
-        try{
-            if(currency_type != curr::usd){
+            if(currency_type != curr::usd){ 
                 Usd money(getprice());
                 setprice( money.changetocu(currency_type, getprice()));
-            }
-            deposit(cart_Shop::getprice());
-            Bank::withdraw(getprice());
-            cart_Shop::print();
-        }
-        catch(std::out_of_range &e){
+            }try
+        {deposit(getprice());}catch(std::out_of_range &e){
             std::cout << e.what()<< std::endl;
         }
-       
+            Shop::withdraw(getprice());
+
+            cart_Shop::print();
+
+         
+    
         
     }

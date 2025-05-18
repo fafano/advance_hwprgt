@@ -17,11 +17,11 @@ private:
 
     Item(std::string, double p, std::string u, int a);
     virtual double get_price() const;
-    virtual int get_amount() const;
+    int get_amount() const;
     virtual std::string get_unit() const;
-    void set_amount(int number);
+    virtual void set_amount(int number);
     Item &operator=(const Item & other);
-    void operator-=(int a);
+     void operator-=(int a);
 protected:
     std::string name;
     double price;
@@ -42,9 +42,10 @@ public:
     Fruit(std::string n, double p, int a);
     
     double get_price() const override;
-    int get_amount() const override;
-    void operator-=(int a);
-
+    // int get_amount() const override;
+     void set_amount(int number) override;
+   void operator-=(int a);
+    
     ~Fruit(){};
 };
 
@@ -58,8 +59,8 @@ public:
 
     Seasoning(std::string n, double p, int a);
     double get_price() const override;
-    int get_amount() const override;
-    void operator-=(int a);
+    // int get_amount() const override;
+   void operator-=(int a);
 };
 
 
@@ -70,7 +71,7 @@ class Snack: public Item{
 
 public:
     Snack(std::string n, double p, int a);
-    void operator-=(int a);
+   void operator-=(int a);
 };
 
 
