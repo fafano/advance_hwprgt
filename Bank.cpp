@@ -1,5 +1,6 @@
 #include "Bank.h"
 #include "shop.h"
+#include <stdexcept>
 // #include "shop.h"
 
 // #include <stdexcept>
@@ -25,11 +26,14 @@ Prs_Act::Prs_Act(std::string ahn,long int an,curr ct, double b ):
        Bank( ahn, an, ct, b , 1000 ), cart_Shop(ahn){}
 
 void Prs_Act:: deposit(double amount){
-    if(amount > Bank::balance || limit < amount ){
-        std::cout<<amount<<" "<<Bank::balance<<" "<<limit<<" ";
-        throw std::out_of_range ("limit per day or no enough balance!!");
+    if(Bank::limit < amount ){
+        // std::cout<<amount<<" "<<Bank::balance<<" "<<limit<<" ";
+        throw std::out_of_range ("\nYour purchase and money transfer limit has been reached today.\n");
     }
-    limit -= amount;
+    else if(amount > Bank::balance){
+        throw std::invalid_argument ("\nyour account ballance is not enough.\n");
+    }
+    Bank::limit -= amount;
     // std::cout<<Bank::balance <<amount;
     Bank::balance -= amount;
     // std::cout<<Bank::balance ;
@@ -43,6 +47,9 @@ void Prs_Act:: calculate(){
             }try
         {deposit(getprice());}catch(std::out_of_range &e){
             std::cout << e.what()<< std::endl;
+        }
+        catch(std::invalid_argument &a){
+            std::cout << a.what()<< std::endl;
         }
             Shop::withdraw(getprice());
 
@@ -60,12 +67,23 @@ Org_Act::Org_Act(std::string ahn,long int an,curr ct, double b ):
        Bank( ahn, an, ct, b, 10000), cart_Shop(ahn){}
 
 void Org_Act:: deposit(double amount){
-    if(amount > Bank::balance || limit < amount){
-        throw std::out_of_range ("limit per day or no enough balance!!");
+    
+
+    if(Bank::limit < amount ){
+        // std::cout<<amount<<" "<<Bank::balance<<" "<<limit<<" ";
+        throw std::out_of_range ("\nYour purchase and money transfer limit has been reached today.\n");
+
+
     }
-    limit -= amount;
+    if(amount > Bank::balance){
+        throw std::invalid_argument ("\nyour account ballance is not enough.\n");
+    }
+    Bank::limit -= amount;
+    // std::cout<<Bank::balance <<amount;
     Bank::balance -= amount;
+    // std::cout<<Bank::balance ;
 }
+
 void Org_Act:: calculate(){
             if(currency_type != curr::usd){ 
                 Usd money(getprice());

@@ -4,12 +4,12 @@
 
 
 int main(){
-   Prs_Act per1("mina" , 123456 , usd, 1001 );
+   Prs_Act per1("mina" , 123456 , usd, 1600 );
     Org_Act per2("fafa" , 999999 , irr, 500 );
    // std::cout<<per1.get_balance()<<std::endl; 
    // per1.deposit(10000);
-    Fruit apple("apple" , 100 , 10);
-    // Snack chips("chips" , 100 , 2);
+    Fruit apple("apple" , 500 , 10);
+    Snack chips("chips" , 100 , 2);
     // auto apple = std::make_shared<Item>("apple", 2.5, "kg", 10);
    // std::cout<<1111;
 //   
@@ -18,7 +18,8 @@ int main(){
     // if(per1.take(apple, 2)){
     //     apple.set
     // }
-    per1.amount_setter( apple, 11);
+    per1.amount_setter( apple, 3);
+    // per1.amount_setter(chips, 3);
 //    per1.take(std::make_shared<Item>(apple) , 2);
 //     per1.take(std::make_shared<Item>(apple) , 2);
     

@@ -21,6 +21,9 @@ void cart_Shop:: amount_setter(Item & item, int amount){
     catch(invalid_argument &e){
         cout << e.what()<< endl;
     }
+    catch(out_of_range &a){
+        cout << a.what() << endl;
+    }
     
 
 }
@@ -31,7 +34,16 @@ bool cart_Shop::take(std::shared_ptr<Item> it , int amount){
         cout<<"theres no enough amount of: "<< it->get_name();
          throw std::invalid_argument(" !!");
          return false;
-    }else{
+    }
+    else if(amount < 0){
+        throw std::out_of_range("you enter a number lower than zero!!");
+        return false;
+    }
+
+
+
+
+    else{
          
          items.first.push_back(std::make_shared<Item>(*it));
          items.second.push_back(amount);
