@@ -24,11 +24,12 @@ class cart_Shop : public Shop{
         int i=0;
         std::string name;
      public:
-       void take(std::shared_ptr<Item>it , int among);
+       bool take(std::shared_ptr<Item>it , int among);
        double getprice();
        void setprice(double amount);
        void print();
-      //  virtual ~cart_Shop();
+       void amount_setter(Item & item, int amount);
+;      //  virtual ~cart_Shop();
       cart_Shop(std::string name);
      
 };

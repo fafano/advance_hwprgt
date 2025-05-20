@@ -8,14 +8,21 @@ int main(){
     Org_Act per2("fafa" , 999999 , irr, 500 );
    // std::cout<<per1.get_balance()<<std::endl; 
    // per1.deposit(10000);
-   Fruit apple("apple" , 100 , 10);
-    Snack chips("chips" , 100 , 2);
- 
+    Fruit apple("apple" , 100 , 10);
+    // Snack chips("chips" , 100 , 2);
+    // auto apple = std::make_shared<Item>("apple", 2.5, "kg", 10);
    // std::cout<<1111;
-   per1.take(std::make_shared<Item>(apple) , 2);
-    per1.take(std::make_shared<Item>(apple) , 2);
+//   
+//  // مثال: ساخت apple
     
-   per1.take(std::make_shared<Item>(chips) , 1);
+    // if(per1.take(apple, 2)){
+    //     apple.set
+    // }
+    per1.amount_setter( apple, 2);
+//    per1.take(std::make_shared<Item>(apple) , 2);
+//     per1.take(std::make_shared<Item>(apple) , 2);
+    
+//    per1.take(std::make_shared<Item>(chips) , 1);
    //  per2.take(std::make_shared<Item>(apple) , 2);
     
    // per2.take(std::make_shared<Item>(chips) , 1);
@@ -25,7 +32,8 @@ int main(){
    // per2.calculate();
    //  per1.print();
    // std::cout<<per1.get_balance();
-   std::cout <<apple.get_amount() ; 
+   std::cout <<apple.get_amount(); ; 
+
    // per1.print();
    
    
