@@ -18,7 +18,7 @@ int main(){
     // if(per1.take(apple, 2)){
     //     apple.set
     // }
-    per1.amount_setter( apple, 2);
+    per1.amount_setter( apple, 11);
 //    per1.take(std::make_shared<Item>(apple) , 2);
 //     per1.take(std::make_shared<Item>(apple) , 2);
     

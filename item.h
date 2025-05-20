@@ -22,6 +22,7 @@ private:
     virtual void set_amount(int number);
     Item &operator=(const Item & other);
      void operator-=(int a);
+     std::string get_name ()const;
 protected:
     std::string name;
     double price;

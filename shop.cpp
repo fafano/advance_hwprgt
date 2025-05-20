@@ -1,4 +1,5 @@
 #include "shop.h"
+#include <stdexcept>
 // #include <memory>
 // #include <iostream>
 
@@ -12,26 +13,34 @@ void Shop::withdraw( double amount){
 }
 void cart_Shop:: amount_setter(Item & item, int amount){
     auto  it = std::make_shared<Item>(item);
-    if(take( it, amount)){
+    try{
+        if(take( it, amount)){
         item.set_amount(item.get_amount()-amount);
+        }
     }
+    catch(invalid_argument &e){
+        cout << e.what()<< endl;
+    }
+    
+
 }
 
-bool cart_Shop::take(std::shared_ptr<Item> it , int among){
+bool cart_Shop::take(std::shared_ptr<Item> it , int amount){
           
-    if(it->get_amount() < among ){
-        return false;
-         throw std::invalid_argument("sorry we have not that mouch!!");
+    if(it->get_amount() < amount ){
+        cout<<"theres no enough amount of: "<< it->get_name();
+         throw std::invalid_argument(" !!");
+         return false;
     }else{
          
          items.first.push_back(std::make_shared<Item>(*it));
-         items.second.push_back(among);
-         (*it)-= among;
+         items.second.push_back(amount);
+         (*it)-= amount;
         // it->set_amount(among);
         
-            int free = among / 5;
-            among -=free;
-         price+=(among*(it->get_price()));
+            int free = amount / 5;
+            amount -=free;
+         price+=(amount*(it->get_price()));
          return true;
      }
    
@@ -53,6 +62,9 @@ void cart_Shop :: setprice(double amount){
 // }
 
  void cart_Shop::print(){
+    if(items.first.empty()){
+        return;
+    }
        cout<<"*********list**********";
        for(auto it : items.first){
         // (*it) -=items.second[i];

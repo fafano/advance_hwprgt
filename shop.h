@@ -24,7 +24,7 @@ class cart_Shop : public Shop{
         int i=0;
         std::string name;
      public:
-       bool take(std::shared_ptr<Item>it , int among);
+       bool take(std::shared_ptr<Item>it , int amount);
        double getprice();
        void setprice(double amount);
        void print();
@@ -32,6 +32,7 @@ class cart_Shop : public Shop{
 ;      //  virtual ~cart_Shop();
       cart_Shop(std::string name);
      
+      
 };
 
 

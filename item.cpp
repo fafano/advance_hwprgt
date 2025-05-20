@@ -28,6 +28,9 @@ std::string Item :: get_unit() const{
  void Item:: set_amount(int number){
     this->amount = number;
  }
+ std::string Item:: get_name () const{
+    return this->name;
+ }
 
 
 //--------------------------------------------------------------------------------------------------------
