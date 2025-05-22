@@ -1,13 +1,11 @@
 #include "Bank.h"
-#include "shop.h"
-#include <stdexcept>
-// #include "shop.h"
+ #include "shop.h"
 
 // #include <stdexcept>
 
 
 
-Bank::Bank(std::string ahn,long int an,curr ct, double b , int l): account_holder_name(ahn), account_number(an), currency_type(ct), balance(b) , limit(l){}
+Bank::Bank(std::string ahn,long int an,curr ct, double b , int l): account_holder_name(ahn), account_number(an), currency_type(ct), balance(b), limit(l){}
 
 void Bank:: withdraw(double amount){
     if(amount > 0){
@@ -36,35 +34,30 @@ void Prs_Act:: deposit(double amount){
     Bank::limit -= amount;
     // std::cout<<Bank::balance <<amount;
     Bank::balance -= amount;
-    // std::cout<<Bank::balance ;
 }
-void Prs_Act:: calculate(){
-    // std::cout<<"yy";
-        
-            if(currency_type != curr::usd){ 
-                Usd money(getprice());
-                setprice( money.changetocu(currency_type, getprice()));
-            }try
-        {deposit(getprice());}catch(std::out_of_range &e){
-            std::cout << e.what()<< std::endl;
-        }
-        catch(std::invalid_argument &a){
-            std::cout << a.what()<< std::endl;
-        }
-            Shop::withdraw(getprice());
-
-            cart_Shop::print();
-
-         
-    
-            
-        
-        
+void Prs_Act:: calculate(){   
+    if(currency_type != curr::usd){ 
+        Usd money(getprice());
+        setprice( money.changetocu(currency_type, getprice()));
     }
+    try{
+        deposit(getprice());
+    }
+    catch(std::out_of_range &e){
+        return_item();
+        std::cout << e.what()<< std::endl;  
+    }
+    catch(std::invalid_argument &a){
+        return_item();
+        std::cout << a.what()<< std::endl;
+    }
+    Shop::withdraw(getprice());
+    cart_Shop::print();   
+}
 
 //--------------------------------------------------------------------------------------------------------------------------
 Org_Act::Org_Act(std::string ahn,long int an,curr ct, double b ):
-       Bank( ahn, an, ct, b, 10000), cart_Shop(ahn){}
+    Bank( ahn, an, ct, b, 10000), cart_Shop(ahn){}
 
 void Org_Act:: deposit(double amount){
     
@@ -85,18 +78,23 @@ void Org_Act:: deposit(double amount){
 }
 
 void Org_Act:: calculate(){
-            if(currency_type != curr::usd){ 
-                Usd money(getprice());
-                setprice( money.changetocu(currency_type, getprice()));
-            }try
-        {deposit(getprice());}catch(std::out_of_range &e){
-            std::cout << e.what()<< std::endl;
-        }
-            Shop::withdraw(getprice());
-
-            cart_Shop::print();
-
-         
-    
-        
+    if(currency_type != curr::usd){ 
+        Usd money(getprice());
+        setprice( money.changetocu(currency_type, getprice()));
     }
+    try{
+        deposit(getprice());
+    }
+    catch(std::out_of_range &e){
+        return_item();
+        std::cout << e.what()<< std::endl;  
+    }
+    catch(std::invalid_argument &a){
+        return_item();
+        std::cout << a.what()<< std::endl;
+    }
+    Shop::withdraw(getprice());
+    cart_Shop::print();
+    //s
+ 
+}
