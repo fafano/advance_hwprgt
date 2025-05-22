@@ -1,13 +1,10 @@
 #include "Bank.h"
-#include "shop.h"
-
-// #include <stdexcept>
-
 
 
 Bank::Bank(std::string ahn,long int an,curr ct, double b , int l): account_holder_name(ahn), account_number(an), currency_type(ct), balance(b), limit(l){}
 
 void Bank:: withdraw(double amount){
+
     if(amount > 0){
         balance += amount;
     }
@@ -18,28 +15,29 @@ void Bank:: withdraw(double amount){
 double Bank:: get_balance(){
     return Bank::balance;
 };
-//-----------------------------------------------------------------------------------------------------------------------
+
+
+//---------------------------------------------------------------------------------------------------------------------Prs_Act
+
 
 Prs_Act::Prs_Act(std::string ahn,long int an,curr ct, double b ):
        Bank( ahn, an, ct, b , 1000 ), cart_Shop(ahn){}
 
 void Prs_Act:: deposit(double amount){
+
     if(Bank::limit < amount ){
-        // std::cout<<amount<<" "<<Bank::balance<<" "<<limit<<" ";
         throw std::out_of_range ("\nYour purchase and money transfer limit has been reached today.\n");
     }
     else if(amount > Bank::balance){
         throw std::invalid_argument ("\nyour account ballance is not enough.\n");
     }
     Bank::limit -= amount;
-    // std::cout<<Bank::balance <<amount;
     Bank::balance -= amount;
 }
 void Prs_Act:: calculate(){   
     if(currency_type != curr::usd){ 
         Usd money(getprice());
-        setprice( money.changetocu(currency_type, getbace()));
-        // s= money.getcu();
+        setprice( money.changetocu(currency_type, getprice()));
     }
     try{
         deposit(getprice());
@@ -56,29 +54,27 @@ void Prs_Act:: calculate(){
     cart_Shop::print();   
 }
 
-//--------------------------------------------------------------------------------------------------------------------------
+
+//--------------------------------------------------------------------------------------------------------------------Org_Act
+
+
 Org_Act::Org_Act(std::string ahn,long int an,curr ct, double b ):
     Bank( ahn, an, ct, b, 10000), cart_Shop(ahn){}
 
 void Org_Act:: deposit(double amount){
-    
 
     if(Bank::limit < amount ){
-        // std::cout<<amount<<" "<<Bank::balance<<" "<<limit<<" ";
-        throw std::out_of_range ("\nYour purchase and money transfer limit has been reached today.\n");
-
-
+        throw std::out_of_range ("\nYour purchase and money transfer limit has been reached today.\n" );
     }
     if(amount > Bank::balance){
-        throw std::invalid_argument ("\nyour account ballance is not enough.\n");
+        throw std::invalid_argument ("\nyour account ballance is not enough.\n" );
     }
     Bank::limit -= amount;
-    // std::cout<<Bank::balance <<amount;
     Bank::balance -= amount;
-    // std::cout<<Bank::balance ;
 }
 
 void Org_Act:: calculate(){
+
     if(currency_type != curr::usd){ 
         Usd money(getprice());
         setprice( money.changetocu(currency_type, getprice()));
@@ -96,6 +92,4 @@ void Org_Act:: calculate(){
     }
     Shop::withdraw(getprice());
     cart_Shop::print();
-    //s
- 
 }
