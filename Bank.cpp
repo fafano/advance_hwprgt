@@ -16,6 +16,20 @@ double Bank:: get_balance(){
     return Bank::balance;
 };
 
+std::string  Bank:: getcu(){
+    std::string s;
+    if(currency_type==curr::usd){
+        s = " $";
+        return s;
+    }else if(currency_type==curr::irr){
+        s = " IRR";
+        return s;
+    }else{
+        s = " €";
+        return s;
+    }
+}
+
 
 //---------------------------------------------------------------------------------------------------------------------Prs_Act
 
@@ -37,7 +51,7 @@ void Prs_Act:: deposit(double amount){
 void Prs_Act:: calculate(){   
     if(currency_type != curr::usd){ 
         Usd money(getprice());
-        setprice( money.changetocu(currency_type, getprice()));
+        setprice( money.changetocu(currency_type, money.getbace()));
     }
     try{
         deposit(getprice());
@@ -51,7 +65,7 @@ void Prs_Act:: calculate(){
         std::cout << a.what()<< std::endl;
     }
     Shop::withdraw(getprice());
-    cart_Shop::print();   
+    cart_Shop::print(getcu());   
 }
 
 
@@ -77,7 +91,7 @@ void Org_Act:: calculate(){
 
     if(currency_type != curr::usd){ 
         Usd money(getprice());
-        setprice( money.changetocu(currency_type, getprice()));
+        setprice( money.changetocu(currency_type, money.getbace()));
     }
     try{
         deposit(getprice());
@@ -91,5 +105,5 @@ void Org_Act:: calculate(){
         std::cout << a.what()<< std::endl;
     }
     Shop::withdraw(getprice());
-    cart_Shop::print();
+    cart_Shop::print(getcu());
 }

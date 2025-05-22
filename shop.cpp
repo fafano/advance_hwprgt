@@ -59,11 +59,11 @@ cart_Shop::~cart_Shop(){
 
 
 
-void cart_Shop::print(){
+void cart_Shop::print(string s){
     if( items.first.empty() ){
         return;
     }
-    cout<<endl<< "****************************************************List****************************************************" << endl;
+    cout<<endl<<endl<< "****************************************************List****************************************************" << endl;
     for(auto it : items.first){
         cout<<*it
             << "|Amount you buy : " << std::setw(4) << std::left <<items.second[i] 
@@ -77,9 +77,14 @@ void cart_Shop::print(){
     cout<<std::setw(54) << std::left << "" 
         << std::setw(5) << "."<< endl<<std::setw(54) << std::left << ""
         << std::setw(5) << "." << endl <<std::setw(54) << std::left << ""  
-        << std::setw(5) << "." << endl << std::setw(108) << std::setfill('_') << ""
-        << std::endl
-        << endl<<"Dear " << this->name <<", thank you for your choice. final amount with discount "<<getprice()<<endl
-        << std::setw(108) << std::setfill('_') << ""
-        << std::endl;
+        << std::setw(5) << "." << endl;
+        for(int i = 1 ; i < 108 ; i++){
+            cout  << '_';
+        }
+        cout<<"\n\nDear " << this->name <<", thank you for your choice. final amount with discount "<<getprice()<<s<<endl;
+        for(int i = 1 ; i < 108 ; i++){
+            cout  << '_';
+        }
+        cout<<endl;
+       
 }                

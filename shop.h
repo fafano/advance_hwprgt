@@ -31,7 +31,7 @@ public:
   void take( Item* it, int among );
   double getprice();
   void setprice( double amount );
-  void print();
+  void print(std::string s);
   virtual ~cart_Shop();
   void return_item();
 };

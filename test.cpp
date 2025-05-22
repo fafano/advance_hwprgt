@@ -19,16 +19,19 @@ int main(){
 
    
 
-per1.take(&chips , 2);
+   per2.take(&chips , 2);
+per1.take(&chips , 1);
 per1.take(&apple, 6);
 per1.take(&nmd, 3);
+per2.take(&apple , 11);
 
 
 
    
    // std::cout<<2222;
    per1.calculate();
-   std::cout << "..............." ; 
+   // std::cout << "..............." ; 
+   per2.calculate();
 //    per1.get_balance();
 //    per1.print();
 //    std::cout<<per1.get_balance();
