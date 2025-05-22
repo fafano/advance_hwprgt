@@ -54,7 +54,9 @@ void Prs_Act:: calculate(){
         setprice( money.changetocu(currency_type, money.getbace()));
     }
     try{
-        deposit(getprice());
+        deposit(getprice()); 
+        Shop::withdraw(getprice());
+        cart_Shop::print(getcu());
     }
     catch(std::out_of_range &e){
         return_item();
@@ -64,8 +66,7 @@ void Prs_Act:: calculate(){
         return_item();
         std::cout << a.what()<< std::endl;
     }
-    Shop::withdraw(getprice());
-    cart_Shop::print(getcu());   
+      
 }
 
 
@@ -76,7 +77,7 @@ Org_Act::Org_Act(std::string ahn,long int an,curr ct, double b ):
     Bank( ahn, an, ct, b, 10000), cart_Shop(ahn){}
 
 void Org_Act:: deposit(double amount){
-
+    
     if(Bank::limit < amount ){
         throw std::out_of_range ("\nYour purchase and money transfer limit has been reached today.\n" );
     }
@@ -92,9 +93,14 @@ void Org_Act:: calculate(){
     if(currency_type != curr::usd){ 
         Usd money(getprice());
         setprice( money.changetocu(currency_type, money.getbace()));
+        Usd money2(limit);
+        limit =  money.changetocu(currency_type,money2.getbace());
+       
     }
     try{
         deposit(getprice());
+        Shop::withdraw(getprice());
+        cart_Shop::print(getcu());
     }
     catch(std::out_of_range &e){
         return_item();
@@ -104,6 +110,5 @@ void Org_Act:: calculate(){
         return_item();
         std::cout << a.what()<< std::endl;
     }
-    Shop::withdraw(getprice());
-    cart_Shop::print(getcu());
+    
 }
