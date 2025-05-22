@@ -1,5 +1,5 @@
 #include "Bank.h"
- #include "shop.h"
+#include "shop.h"
 
 // #include <stdexcept>
 
@@ -38,7 +38,8 @@ void Prs_Act:: deposit(double amount){
 void Prs_Act:: calculate(){   
     if(currency_type != curr::usd){ 
         Usd money(getprice());
-        setprice( money.changetocu(currency_type, getprice()));
+        setprice( money.changetocu(currency_type, getbace()));
+        // s= money.getcu();
     }
     try{
         deposit(getprice());

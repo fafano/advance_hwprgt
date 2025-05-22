@@ -66,7 +66,7 @@ cart_Shop::~cart_Shop() {
         i++;
 
        }
-       cout<<endl<<"Dear " << this->name <<", thank you for your choice. final amount with discount "<<getprice()<<endl;
+       cout<<endl<<"Dear " << this->name <<", thank you for your choice. final amount with discount "<<getprice()<<" $"<<endl;
  }
 
 

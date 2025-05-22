@@ -6,6 +6,7 @@
 #include <cmath> // برای تابع abs
 
 enum curr { usd, irr, eur, idn };
+// هر بیس 1 دلاره و هر 2 بیس یه یورو عه و هر 3 بیس یه ریال هست !!
 
 class Currency {
 protected:
@@ -14,46 +15,33 @@ protected:
     double among = 0;
     
 public:
-    Currency() = default;
     virtual ~Currency() = default;
-    
     double changetocu(curr cu, double sum);
-    void getcu();
-    double getbace() const { return base; }
-    curr getCurrencyType() const { return currency; }
-};
-
-class Usd : public Currency {
-public:
-    Usd(int am = 0);
-    Usd operator+(const Usd& other) const;
-    Usd operator-(const Usd& other) const;
+    double getbace() const;
+    Currency operator+(const Usd& other) const;
+    Currency operator-(const Usd& other) const;
     bool operator==(const Usd& other) const;
     bool operator!=(const Usd& other) const;
     bool operator<(const Usd& other) const;
     bool operator>(const Usd& other) const;
 };
 
+class Usd : public Currency {
+public:
+    Usd(int am = 0);
+   
+};
+
 class Eur : public Currency {
 public:
     Eur(int am = 0);
-    Eur operator+(const Eur& other) const;
-    Eur operator-(const Eur& other) const;
-    bool operator==(const Eur& other) const;
-    bool operator!=(const Eur& other) const;
-    bool operator<(const Eur& other) const;
-    bool operator>(const Eur& other) const;
+   
 };
 
 class Irr : public Currency {
 public:
     Irr(int am = 0);
-    Irr operator+(const Irr& other) const;
-    Irr operator-(const Irr& other) const;
-    bool operator==(const Irr& other) const;
-    bool operator!=(const Irr& other) const;
-    bool operator<(const Irr& other) const;
-    bool operator>(const Irr& other) const;
+ 
 };
 
 #endif
